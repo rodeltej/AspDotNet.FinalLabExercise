@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WorkScheduleData.Models.Employee>
+@section Styles {
+    <link rel="stylesheet" href="~/css/user.css" />
+}
+
+@{
+    ViewBag.Title = "Employee";
+}
+
+<h2>Employee</h2>
+
+<p>
+    <button class="addEmployee">@Html.ActionLink("Add Employee", "Add", new {@class = "addEmp"})</button>
+</p>
+
+<table class="table table-striped table-hover table-dark">
+    <thead class="thead-dark">
+        <tr>
+            <th style="text-align:center">
+                Employee Id
+            </th>
+            <th style="text-align:center">
+               First Name
+            </th>
+            <th style="text-align:center">
+                Last Name
+            </th style="text-align:center">
+            <th style="text-align:center">
+                Home Phone
+            </th>
+            <th style="text-align:center">
+                Options
+            </th>
+        </tr>
+    </thead>
+
+    @foreach(var item in Model)
+    {
+
+        <tr>
+            <td style="text-align:center">
+                @Html.DisplayFor(model => item.EmployeeId)
+            </td>
+            <td style="text-align:center">
+                @Html.DisplayFor(model => item.FirstName)
+            </td>
+            <td style="text-align:center">
+                @Html.DisplayFor(model => item.LastName)
+            </td>
+             <td style="text-align:center">
+                @Html.DisplayFor(model => item.HomePhone)
+            </td>
+            <td style="text-align:center">
+                <button class="edit">@Html.ActionLink("Edit", "Edit", new { id=item.EmployeeId, action="edit" }, new {@class ="editTxt"})</button> |
+                <button class="delete">@Html.ActionLink("Delete", "Delete", new { id=item.EmployeeId }, new {@class ="deleteTxt"})</button>
+            </td>
+        </tr>
+    }
+</table>
